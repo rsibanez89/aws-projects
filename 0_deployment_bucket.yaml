@@ -1,0 +1,18 @@
+# This is the deployment bucket that will be use to store the lambda code
+# It is in a separate template because I will create this template just once.
+---
+Resources:
+  DeploymentBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: rsibanez89
+
+Outputs:
+  Rsibanez89Bucket:
+    Description: The bucket that will host the lambda functions.
+    Value: !Ref DeploymentBucket
+    Export:
+      Name: Rsibanez89Bucket
+
+# > Run the following command
+# > aws cloudformation deploy --template-file 0_deployment_bucket.yaml --stack-name rsibanez89-deployment-bucket
