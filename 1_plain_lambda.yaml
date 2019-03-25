@@ -1,0 +1,40 @@
+---
+Resources:
+  PlainLambdaFunction:
+    Type: 'AWS::Lambda::Function'
+    Properties:
+      Code:
+        S3Bucket: !ImportValue Rsibanez89Bucket
+        S3Key: >-
+          plain-lambda.zip
+      FunctionName: plain-lambda
+      Handler: 'PlainLambda::PlainLambda.ApiGatewayLambdaHandler::Handle'
+      MemorySize: 1024
+      Runtime: dotnetcore2.1
+      Timeout: 6
+      Role: !GetAtt
+        - PlainLambdaRole
+        - Arn
+
+  PlainLambdaRole: 
+    Type: "AWS::IAM::Role"
+    Properties:
+      RoleName: "PlainLambdaRole"
+      AssumeRolePolicyDocument: 
+        Version: "2012-10-17"
+        Statement: 
+          - Effect: "Allow"
+            Principal: 
+              Service: 
+                - "lambda.amazonaws.com"
+            Action: 
+              - "sts:AssumeRole"
+      Policies: 
+        - PolicyName: "PlainLambdaPolicy"
+          PolicyDocument: 
+            Version: "2012-10-17"
+            Statement: 
+              - Effect: "Allow"
+                Action: "*"
+                Resource: "*"
+      Path: /
