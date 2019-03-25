@@ -8,7 +8,7 @@ Resources:
         S3Key: >-
           plain-lambda.zip
       FunctionName: plain-lambda
-      Handler: 'PlainLambda::PlainLambda.ApiGatewayLambdaHandler::Handle'
+      Handler: 'PlainLambda::PlainLambda.LambdaHandler::Handle'
       MemorySize: 1024
       Runtime: dotnetcore2.1
       Timeout: 6
