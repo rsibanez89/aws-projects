@@ -16,8 +16,8 @@ Default output format [None]: json
 
 ### 3 - Check each solution
 
-#### 1 - Plain Lambda [LINK](../PlainLambda)
+#### 1 - Plain Lambda [LINK](./master/PlainLambda)
 The most basic lambda function you can create in .net core.
 
-#### 2 - Api Gateway Lambda [LINK](../ApiGatewayLambda)
+#### 2 - Api Gateway Lambda [LINK](../tree/master/ApiGatewayLambda)
 A basic lambda function that is triggered by API Gateway.
