@@ -8,6 +8,7 @@ aws s3 cp ./ApiGatewayLambda/bin/Debug/netcoreapp2.1/api-gateway-lambda.zip s3:/
 
 aws cloudformation delete-stack --stack-name api-gateway-lambda
 
+# Don't do this in production!
 Write-Host "Waiting 5 seconds for the stack to be deleted."
 Start-Sleep -Seconds 5
 
