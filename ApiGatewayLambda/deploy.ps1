@@ -1,12 +1,12 @@
 # On local environment run > Powershell.exe -File ./ApiGatewayLambda/deploy.ps1
+aws cloudformation delete-stack --stack-name api-gateway-lambda
+
 dotnet clean ./ApiGatewayLambda/ApiGatewayLambda.csproj
 dotnet publish ./ApiGatewayLambda/ApiGatewayLambda.csproj
 
 7z a ./ApiGatewayLambda/bin/Debug/netcoreapp2.1/api-gateway-lambda.zip ./ApiGatewayLambda/bin/Debug/netcoreapp2.1/publish/*
 
 aws s3 cp ./ApiGatewayLambda/bin/Debug/netcoreapp2.1/api-gateway-lambda.zip s3://rsibanez89
-
-aws cloudformation delete-stack --stack-name api-gateway-lambda
 
 # Don't do this in production!
 Write-Host "Waiting 5 seconds for the stack to be deleted."

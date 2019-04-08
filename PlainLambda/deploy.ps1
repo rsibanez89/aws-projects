@@ -1,12 +1,12 @@
 # On local environment run > Powershell.exe -File ./PlainLambda/deploy.ps1
+aws cloudformation delete-stack --stack-name plain-lambda
+
 dotnet clean ./PlainLambda/PlainLambda.csproj
 dotnet publish ./PlainLambda/PlainLambda.csproj
 
 7z a ./PlainLambda/bin/Debug/netcoreapp2.1/plain-lambda.zip ./PlainLambda/bin/Debug/netcoreapp2.1/publish/*
 
 aws s3 cp ./PlainLambda/bin/Debug/netcoreapp2.1/plain-lambda.zip s3://rsibanez89
-
-aws cloudformation delete-stack --stack-name plain-lambda
 
 # Don't do this in production!
 Write-Host "Waiting 5 seconds for the stack to be deleted."

@@ -38,3 +38,23 @@ Resources:
                 Action: "*"
                 Resource: "*"
       Path: /
+
+  ApiGatewayLambdaRestApi:
+    Type: 'AWS::ApiGateway::RestApi'
+    Properties:
+      Name: api-gateway-lambda
+  
+  ApiGatewayLambdaMethodGet:
+    Type: 'AWS::ApiGateway::Method'
+    Properties:
+      HttpMethod: GET
+      RequestParameters: {}
+      ResourceId: !GetAtt ApiGatewayLambdaRestApi.RootResourceId
+      RestApiId: !Ref ApiGatewayLambdaRestApi
+      ApiKeyRequired: false
+      AuthorizationType: NONE
+      Integration:
+        IntegrationHttpMethod: GET
+        Type: AWS_PROXY
+        Uri: !Sub arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${PlainLambdaFunction.Arn}/invocations
+      MethodResponses: []

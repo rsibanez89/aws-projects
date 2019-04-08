@@ -2,16 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Amazon.Lambda.APIGatewayEvents" Version="1.2.0" />
     <PackageReference Include="Amazon.Lambda.Core" Version="1.1.0" />
     <PackageReference Include="Amazon.Lambda.Serialization.Json" Version="1.5.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="ApiGatewayLambda.runtimeconfig.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+ 
 </Project>
