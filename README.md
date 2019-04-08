@@ -16,7 +16,7 @@ Default output format [None]: json
 
 ### 3 - Check each solution
 
-#### 1 - Plain Lambda [LINK](../PlainLambda/README.md)
+#### 1 - Plain Lambda [LINK](./PlainLambda/README.md)
 The most basic lambda function you can create in .net core.
 
 #### 2 - Api Gateway Lambda [LINK](./ApiGatewayLambda/README.md)
