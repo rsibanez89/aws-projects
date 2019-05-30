@@ -10,10 +10,4 @@
     <PackageReference Include="Amazon.Lambda.Serialization.Json" Version="1.5.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="PlainLambda.runtimeconfig.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>

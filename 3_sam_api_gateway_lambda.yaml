@@ -1,0 +1,28 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Simple API Gateway triggering a Lambda function
+
+Resources:
+  SAMApiGatewayLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: SAMApiGatewayLambda
+      CodeUri: ./SAMApiGatewayLambda/bin/Debug/netcoreapp2.1/publish
+      Handler: SAMApiGatewayLambda::SAMApiGatewayLambda.SAMApiGatewayHandler::Handle
+      Runtime: dotnetcore2.1
+      Environment:
+        Variables:
+          PARAM1: VALUE
+      Events:
+        DebuggingExample:
+          Type: Api
+          Properties:
+            Path: /
+            Method: get
+
+Outputs:
+  SAMApiGatewayLambdaURL:
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/SAMApiGatewayLambda/"
+
+  SAMApiGatewayLambdaFunction:
+    Value: !GetAtt SAMApiGatewayLambdaFunction.Arn

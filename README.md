@@ -21,3 +21,6 @@ The most basic lambda function you can create in .net core.
 
 #### 2 - Api Gateway Lambda [LINK](./ApiGatewayLambda/README.md)
 A basic lambda function that is triggered by API Gateway.
+
+#### 3 - SAM Api Gateway Lambda [LINK](./SAMApiGatewayLambda/README.md)
+A basic lambda function that is triggered by API Gateway by using AWS Serverless Application Model (SAM) instead of plain CloudFormation templates.
