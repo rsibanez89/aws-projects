@@ -52,7 +52,7 @@ Resources:
       ApiKeyRequired: false
       AuthorizationType: NONE
       Integration:
-        IntegrationHttpMethod: POST
+        IntegrationHttpMethod: POST # This is always POST even if the method is GET
         Type: AWS_PROXY
         Uri: !Sub arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${ApiGatewayLambdaFunction.Arn}/invocations
       MethodResponses: []
