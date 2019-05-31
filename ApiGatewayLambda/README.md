@@ -4,4 +4,4 @@
 ```
 
 ## Do it yourself
-Follow the same steps explained here: [LINK](./PlainLambda/README.md)
+Follow the same steps explained here: [LINK](././PlainLambda/README.md)

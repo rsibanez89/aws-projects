@@ -31,12 +31,17 @@
 > dotnet publish ./SAMApiGatewayLambda/SAMApiGatewayLambda.csproj
 ```
 
-### 5 - Add everything into a zip file
+### 5 - Create a sample request to test the lambda function
 ```
-> sam local generate-event api > testApiRequest.json
+> sam local generate-event api > testSAMApiGatewayLambdaRequest.json
 ```
 
-### 6 - Upload the zip file to the s3 bucket
+### 6 - Test the lambda function
 ```
-> sam local invoke --template 3_sam_api_gateway_lambda.yaml --event testApiRequest.json
+> sam local invoke --template 3_sam_api_gateway_lambda.yaml --event testSAMApiGatewayLambdaRequest.json
+```
+
+### 6 - Test the API Gateway
+```
+> sam local start-api --template 3_sam_api_gateway_lambda.yaml
 ```
