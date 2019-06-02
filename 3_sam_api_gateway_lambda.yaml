@@ -12,19 +12,16 @@ Resources:
       CodeUri: s3://rsibanez89/4816b4bf0ba68ecd76492241fca2a418
       Handler: SAMApiGatewayLambda::SAMApiGatewayLambda.SAMApiGatewayHandler::Handle
       Runtime: dotnetcore2.1
-      Environment:
-        Variables:
-          PARAM1: VALUE
       Events:
         SAMApiGatewayLambda:
           Type: Api
           Properties:
-            Path: /
+            Path: /api/{proxy+}
             Method: get
 Outputs:
   SAMApiGatewayLambdaURL:
     Value:
-      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/SAMApiGatewayLambda/
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/sam-api-gateway-lambda/api/
   SAMApiGatewayLambdaArn:
     Value:
       Fn::GetAtt:
