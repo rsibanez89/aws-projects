@@ -4,6 +4,9 @@
 ```
 
 ## Do it yourself
+IMPORTANT: Install SAM CLI version 0.15.0. 
+Version 0.16.1 won't work locally.
+
 ### 1 - Create a project
 ```
 > dotnet new classlib -n SAMApiGatewayLambda
@@ -38,7 +41,7 @@
 
 ### 6 - Test the lambda function
 ```
-> sam local invoke --template 3_sam_api_gateway_lambda.yaml --event testSAMApiGatewayLambdaRequest.json
+> sam local invoke --template 3_sam_api_gateway_lambda.yaml --event lambda-response.json
 ```
 
 ### 7 - Test the API Gateway
@@ -48,12 +51,12 @@
 
 ### 8 - Upload the code to s3
 ```
-> sam package --template-file 3_sam_api_gateway_lambda.yaml --output-template 3_sam_api_gateway_lambda.yaml --s3-bucket rsibanez89
+> sam package --template-file 3_sam_api_gateway_lambda.yaml --output-template 3_sam_api_gateway_lambda_output.yaml --s3-bucket rsibanez89
 ```
 
 ### 9 - Deploy
 ```
-> sam deploy --template-file 3_sam_api_gateway_lambda.yaml --stack-name sam-api-gateway-lambda --capabilities CAPABILITY_NAMED_IAM
+> sam deploy --template-file 3_sam_api_gateway_lambda_output.yaml --stack-name sam-api-gateway-lambda --capabilities CAPABILITY_NAMED_IAM
 ```
 
 ### 10 - Test deployed function

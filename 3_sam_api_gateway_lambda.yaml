@@ -1,29 +1,24 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Simple API Gateway triggering a Lambda function
-Globals:
-  Function:
-    Timeout: 10
+
 Resources:
   SAMApiGatewayLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: sam-api-gateway-lambda
-      CodeUri: s3://rsibanez89/4816b4bf0ba68ecd76492241fca2a418
+      CodeUri: ./SAMApiGatewayLambda/bin/Debug/netcoreapp2.1/publish
       Handler: SAMApiGatewayLambda::SAMApiGatewayLambda.SAMApiGatewayHandler::Handle
       Runtime: dotnetcore2.1
       Events:
         SAMApiGatewayLambda:
           Type: Api
           Properties:
-            Path: /api/{proxy+}
+            Path: /
             Method: get
+
 Outputs:
   SAMApiGatewayLambdaURL:
-    Value:
-      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/sam-api-gateway-lambda/api/
+    Value: !Sub https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/
   SAMApiGatewayLambdaArn:
-    Value:
-      Fn::GetAtt:
-      - SAMApiGatewayLambdaFunction
-      - Arn
+    Value: !GetAtt "SAMApiGatewayLambdaFunction.Arn"
