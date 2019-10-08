@@ -24,3 +24,12 @@ A basic lambda function that is triggered by API Gateway.
 
 #### 3 - SAM Api Gateway Lambda [LINK](./SAMApiGatewayLambda/README.md)
 A basic lambda function that is triggered by API Gateway by using AWS Serverless Application Model (SAM) instead of plain CloudFormation templates.
+
+### 4 - EC2 Example
+Login to the console and create a new KeyPair: https://console.aws.amazon.com/ec2/home?region=us-east-1#KeyPairs
+```
+> aws cloudformation deploy --template-file 4_ec2.yaml --stack-name rod-ec2-example --parameter-overrides KeyName=rsibanez89-ec2 
+> aws cloudformation describe-stacks --stack-name rod-ec2-example
+> ssh -i rsibanez89-ec2.pem ec2-user@ec2-3-19-221-234.us-east-2.compute.amazonaws.com
+```
+
