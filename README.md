@@ -31,5 +31,7 @@ Login to the console and create a new KeyPair: https://console.aws.amazon.com/ec
 > aws cloudformation deploy --template-file 4_ec2.yaml --stack-name rod-ec2-example --parameter-overrides KeyName=rsibanez89-ec2 
 > aws cloudformation describe-stacks --stack-name rod-ec2-example
 > ssh -i rsibanez89-ec2.pem ec2-user@ec2-3-19-221-234.us-east-2.compute.amazonaws.com
+> aws ec2 describe-instance-attribute --instance-id i-0fb581d7cf3094bac --attribute userData --output text --query "UserData.Value" > user_data.txt
+> certutil -decode user_data.txt user_data_decoded.txt
 ```
 
